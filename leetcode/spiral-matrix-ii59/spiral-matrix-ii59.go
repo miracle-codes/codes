@@ -3,11 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	n := 3
+	n := 4
 	res := generateMatrix(n)
 	for _, re := range res {
 		for _, i2 := range re {
-			fmt.Printf("%d", i2)
+			fmt.Printf("%-10d  ", i2)
 		}
 		fmt.Println()
 	}

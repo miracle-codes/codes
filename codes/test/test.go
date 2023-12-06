@@ -2,23 +2,47 @@ package main
 
 import "fmt"
 
+type Node struct {
+	Data int
+	Next *Node
+}
+
+type Linelink struct {
+	Head *Node
+}
+
+func (node *Linelink) AddNode(data int) {
+	newNode := &Node{Data: data}
+	if node.Head == nil {
+		node.Head = newNode
+	} else {
+		current := node.Head
+		for current.Next != nil {
+			current = current.Next
+		}
+		current.Next = newNode
+	}
+
+}
+
+func (l *Linelink) Traverse() {
+	current := l.Head
+
+	for current != nil {
+		fmt.Printf("->%d", current.Data)
+		current = current.Next
+	}
+
+}
+
 func main() {
-	//s := []int{1, 2, 3, 4}
-	//s2 := s[2:]
-	//fmt.Printf("s1 %v,len=%v,cap=%v \n", s, len(s), cap(s))
-	//fmt.Printf("s2 %v,len=%v,cap=%v \n", s2, len(s2), cap(s2))
-	//
-	//s2[0] = 99
-	//fmt.Printf("s1 %v,len=%v,cap=%v \n", s, len(s), cap(s))
-	//fmt.Printf("s2 %v,len=%v,cap=%v \n", s2, len(s2), cap(s2))
-	//
-	//s2 = append(s2, 199)
-	//fmt.Printf("s1 %v,len=%v,cap=%v \n", s, len(s), cap(s))
-	//fmt.Printf("s2 %v,len=%v,cap=%v  \n", s2, len(s2), cap(s2))
-	//
-	//s2[1] = 1999
-	//fmt.Printf("s1 %v,len=%v,cap=%v \n", s, len(s), cap(s))
-	//fmt.Printf("s2 %v,len=%v,cap=%v \n ", s2, len(s2), cap(s2))
-	arr := make(map[string]int, 10)
-	fmt.Printf("len=%v,cap=%v", len(arr))
+	Node := &Linelink{}
+	Node.AddNode(1)
+	Node.AddNode(2)
+	Node.AddNode(2)
+	Node.AddNode(2)
+	Node.AddNode(2)
+	Node.AddNode(2)
+	Node.Traverse()
+
 }
